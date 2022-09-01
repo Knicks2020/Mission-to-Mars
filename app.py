@@ -2,6 +2,10 @@ from flask import Flask, render_template, redirect, url_for
 from flask_pymongo import PyMongo
 import scraping
 
+#find the scraping.py file and download it, correct any errors
+# then run app.py, out put should give me the URL link
+# put it in the same folder as mars scraping
+
 app = Flask(__name__)
 
 # Use flask_pymongo to set up mongo connection
