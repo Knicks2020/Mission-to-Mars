@@ -19,6 +19,7 @@ def scrape_all():
         "news_paragraph": news_paragraph,
         "featured_image": featured_image(browser),
         "facts": mars_facts(),
+        "hemispheres":mars_hemispheres(browser),
         "last_modified": dt.datetime.now()
     }
 
@@ -108,6 +109,10 @@ def mars_hemispheres(browser):
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(url)
     browser.is_element_present_by_css('div.list_text', wait_time=1)
+
+    # Parse the resulting html with soup
+    html = browser.html
+    hemisphere_soup = soup(html, 'html.parser')
 
     # 2. Create a list to hold the images and titles.
     hemisphere_image_urls = []
